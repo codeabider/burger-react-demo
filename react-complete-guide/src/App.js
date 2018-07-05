@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css'; //pre eject
+import classes from './App.css'; //post eject: after configuring webpack css loader
 import Person from './Person/Person';
 
 class App extends Component {
@@ -38,20 +39,13 @@ class App extends Component {
   }
 
   render () {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
+    let btnClass = '';
 
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2)
-      classes.push('red');
+      assignedClasses.push(classes.red);
     if(this.state.persons.length <= 1)
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
 
     let persons = null;
 
@@ -66,15 +60,16 @@ class App extends Component {
                   // changed={this.changePersonName.bind(this, person.id)}
                 />
       });
-      style.backgroundColor = 'red';
+
+      btnClass = classes.btnActive;
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>This is React!</h1>
-        <p className={classes.join(' ')}>Reactive Components</p>
-        <button 
-          style={style}
+        <p className={assignedClasses.join(' ')}>Reactive Components</p>
+        <button
+          className={btnClass}
           onClick={this.togglePersons}>Toggle Persons</button>
         {persons}
       </div>
