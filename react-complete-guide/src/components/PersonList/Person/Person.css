@@ -7,6 +7,15 @@
     text-align: center;
 }
 
+.Person:hover, .Person:focus {
+    background: #cc6;
+    border-color: rgba(105, 34, 34, 0.829);
+}
+
+.Person .remove-elem {
+    cursor: no-drop;
+}
+
 @media screen and (min-width: 730px) {
     .Person {
         width: 650px;
